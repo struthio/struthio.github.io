@@ -4,10 +4,11 @@ body
 	color:#505050;
 	font-family: Courier New;
 	font-size: 8pt;
+	background-image: url("bground.svg");
 }
 a
 {
-	color: #A0A0A0;
+	color: #505050;
 	text-decoration: none;
 	font-size: 8pt;
 }
@@ -15,6 +16,21 @@ a:hover
 {
 	color: #FFE0E0;
 	text-decoration: underline;
+}
+div.menuBack
+{
+	background-color: #000000;
+}
+div.menuBack > a
+{
+	color: #FFFFFF;
+	font-weight: bold;
+}
+p
+{
+	background-color: #ffffff;
+	padding: 5px;
+	border: 1px dashed #505050;
 }
 div#container
 {
@@ -25,6 +41,7 @@ div#container
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	background-color: #ffffff;
 }
 div#menu { float: left;}
 div#preview
@@ -34,22 +51,29 @@ div#preview
 }
 div#menu, div#preview
 {
-	border: 1px solid #C0C0C0;
+	border: 1px solid #505050;
 	width: 200px;
 	height: 200px;
 	padding: 2px;
 	margin: 2px;
 }
-h1
+h1.menu
 {
-	font-size: 10pt;
-	text-align: center;
-	background-color: #C0C0C0;
-	color: #ffffff;
 	padding:0px;
 	margin: 0px;
+	font-size: 10pt;
 }
-
+h1, h2, h3, h4, h5
+{
+	font-size: 24pt;
+	text-align: center;
+	background-color: #505050;
+	color: #ffffff;
+}
+h2 {	font-size: 16pt; background-color: #505050; }
+h3 {	font-size: 14pt; background-color: #707070; }
+h4 {    font-size: 12pt; background-color: #909090; }
+h5 {    font-size: 10pt; background-color: #B0B0B0; }
 img
 {
 	width:200px;

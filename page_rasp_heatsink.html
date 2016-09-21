@@ -34,7 +34,6 @@
 						format:'#,### C'
 					},
 					backgroundColor: '#ffffff',
-					width: 800,
 					height: 400
 				};
 
@@ -52,35 +51,35 @@
 		</script>
 	</head>
 	<body>
-		<a id="menu_back" href="index.html">&lt;-BACK</a>
-		<h1>Raspberry Heatsink Test</h1>
+		<div class="menuBack"><a id="menu_back" href="index.html">&lt;-BACK</a></div>
+		<h1>Raspberry Pi 3 Heatsink Test</h1>
 		<h2>Description</h2>
-		I have been using Raspberry Pi (Model B) for some time as PHP+MySQL server. This raspberry works with aluminum heatsinks that are widely available on net.<br/>
+		<p>I have been using Raspberry Pi (Model B) for some time as PHP+MySQL server. This raspberry works with aluminum heatsinks that are widely available on net.<br/>
 		Recently I decided to improve performance of My setup by moving server from old board to new Raspberry Pi 3 (4 cores and more RAM should help a lot)<br/>
 		As I ordered RPI3 It came bundled with plastic case and aluminum heatsinks. As aluminum are not best head preading metal I was wondering how efficient this heatsinks are and how they compare to copper ones (and moreover how this heat transfering tape (added to all heatsinks) work).<br/>
-		<br/>
-		So I checked temperatures in idle and while running stress-ng with board having:<br/>
+		</p>
+		<p>I checked temperatures in idle and while running stress-ng with board having:<br/>
 		* no heatsink <br/>
 		* aluminium heatsink - mounted with included heat transfering tape<br/>
 		* copper heatsink - mounted with heat transfering glue (Arctic Silver Thermal Adhesive)<br/>
-		<br/>
-		All testes was performed:
-		* without case - to allow free airflow
+		</p>
+		<p>All testes was performed:<br/>
+		* without case - to allow free airflow<br/>
 		* in full plastic case - as this will be target configuration<br/>
-		<br/>
+		</p>
 		<h3>Codes</h3>
 <!--		Temperature logged by:<br/>
 		<code>
 			
 		</code>
 		<br/>-->
-		CPU Stressed by:<br/>
+		<p>CPU Stressed by:<br/>
 		<code>
 			stress-ng --cpu 4 --fork 4 --timeout 60s
 		</code>
-		<br/>
+		</p>
 		<h2>Results</h2>
-		Please move mouse over chart to see exact temperature reading.<br/>
+		<p>Please move mouse over chart to see exact temperature reading.</p>
 		<h3>RPi 3 without case</h3>
 		<h4>Temperature while idle</h4>
 		<div id="chartNoCoverIdle"></div>
