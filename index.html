@@ -1,1 +1,46 @@
-Welcome!
+<html>
+	<head>
+		<title>struthio.github.io</title>
+		<link rel="stylesheet" type="text/css" href="layout.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+		<script>
+$( function()
+{
+	$( "a" ).hover(
+		function()
+		{
+			var tPreview = $(this).attr('title');
+			if (!tPreview)
+				return;	
+
+			if (tPreview.substring(0,4) == 'img:')
+				$('#previewContents').html($('<img>').attr('src',tPreview.substring(4)));
+				else $('#previewContents').html(tPreview);
+		}, function()
+		{
+			$('#previewContents').html('');
+		}
+	);
+});
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="menu">
+				<h1>Raspberry Pi</h2>
+				<a href="page_rasp_heatsink.html" title="Raspberry Pi 3 aluminum and copper heatsink test">Raspberry Pi 3 Heatsink Test</a><br/>
+				<h1>Other Stuff</h2>
+				<a href="htmlMQTTViewer/mqtt_dahboard.html" title="Simple Websockets MQTT dashboard">JavaScript MQTT Dashboard</a><br/>
+				<a href="https://pl.gravatar.com/struthio2015" title="img:https://secure.gravatar.com/avatar/b1326f280519791e5470ac57ab7877cd">Gravatar</a><br/>
+			</div>
+			<div id="preview">
+				<div id="previewTitle"></div>
+				<div id="previewContents"></div>
+			</div>
+			
+		</div>
+		<div id="dialog-page"></div>
+	</body>
+</html>

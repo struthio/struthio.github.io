@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<title>struthio.github.io - Raspberry Heatsink Test</title>
+		<link rel="stylesheet" type="text/css" href="layout.css">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			// Load the Visualization API and the piechart package.
+			google.charts.load('current', {'packages':['corechart']});
+
+			// Set a callback to run when the Google Visualization API is loaded.
+			google.charts.setOnLoadCallback(drawCharts);
+
+			function drawChart(inTableData, inTargetObject)
+			{
+				var jsonData = $.ajax({
+					url: inTableData,
+					dataType: "json",
+					async: false
+				}).responseText;
+
+				// Create our data table out of JSON data loaded from server.
+				var data = new google.visualization.DataTable(jsonData);
+
+				var options = {
+					hAxis:
+					{
+						title: 'Time',
+						format:'#,### sec'
+					},
+					vAxis:
+					{
+						title: 'Temperature in Celsius',
+						format:'#,### C'
+					},
+					backgroundColor: '#ffffff',
+					width: 800,
+					height: 400
+				};
+
+				// Instantiate and draw our chart, passing in some options.
+				var chart = new google.visualization.LineChart(document.getElementById(inTargetObject));
+				chart.draw(data, options);
+			}
+			function drawCharts()
+			{
+				drawChart("page_rasp_heatsink_nocover_idle.json","chartNoCoverIdle");
+				drawChart("page_rasp_heatsink_nocover_stress.json","chartNoCoverStress");
+				drawChart("page_rasp_heatsink_cover_idle.json","chartCoverIdle");
+				drawChart("page_rasp_heatsink_cover_stress.json","chartCoverStress");
+			}
+		</script>
+	</head>
+	<body>
+		<a id="menu_back" href="index.html">&lt;-BACK</a>
+		<h1>Raspberry Heatsink Test</h1>
+		<h2>Description</h2>
+		I have been using Raspberry Pi (Model B) for some time as PHP+MySQL server. This raspberry works with aluminum heatsinks that are widely available on net.<br/>
+		Recently I decided to improve performance of My setup by moving server from old board to new Raspberry Pi 3 (4 cores and more RAM should help a lot)<br/>
+		As I ordered RPI3 It came bundled with plastic case and aluminum heatsinks. As aluminum are not best head preading metal I was wondering how efficient this heatsinks are and how they compare to copper ones (and moreover how this heat transfering tape (added to all heatsinks) work).<br/>
+		<br/>
+		So I checked temperatures in idle and while running stress-ng with board having:<br/>
+		* no heatsink <br/>
+		* aluminium heatsink - mounted with included heat transfering tape<br/>
+		* copper heatsink - mounted with heat transfering glue (Arctic Silver Thermal Adhesive)<br/>
+		<br/>
+		All testes was performed:
+		* without case - to allow free airflow
+		* in full plastic case - as this will be target configuration<br/>
+		<br/>
+		<h3>Codes</h3>
+<!--		Temperature logged by:<br/>
+		<code>
+			
+		</code>
+		<br/>-->
+		CPU Stressed by:<br/>
+		<code>
+			stress-ng --cpu 4 --fork 4 --timeout 60s
+		</code>
+		<br/>
+		<h2>Results</h2>
+		Please move mouse over chart to see exact temperature reading.<br/>
+		<h3>RPi 3 without case</h3>
+		<h4>Temperature while idle</h4>
+		<div id="chartNoCoverIdle"></div>
+		<h4>Temperature under stress</h4>
+		<div id="chartNoCoverStress"></div>
+		<h3>RPi 3 closed in plastic case</h3>
+		<h4>Temperature while idle</h4>
+		<div id="chartCoverIdle"></div>
+		<h4>Temperature under stress</h4>
+		<div id="chartCoverStress"></div>
+	</body>
+</html>
